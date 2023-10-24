@@ -1,0 +1,95 @@
+#include<AFMotor.h>
+#include<Servo.h>
+AF_DCMotor motor1(1);
+AF_DCMotor motor2(2);
+AF_DCMotor motor3(3);
+AF_DCMotor motor4(4);
+
+Void setup() {
+// put your setup code here, to run once:
+Serial.begin(9600);
+
+Motor1.setSpeed(150);
+Motor2.setSpeed(150);
+Motor3.setSpeed(150);
+Motor4.setSpeed(150);
+
+}
+
+Void loop() {
+// put your main code here, to run repeatedly:
+If(Serial.available())
+{
+Serial.println(Serial.read());
+}
+
+If(Serial.read()==83)
+
+{
+Stop();
+}
+If(Serial.read() == 70)
+{
+Forward();
+}
+If(Serial.read() == 66)
+{
+Reverse();
+}
+If(Serial.read() == 82)
+{
+Right();
+}
+If (Serial.read() == 76)
+{
+Left();
+}
+}
+Void right()
+{
+Motor3.run(FORWARD);
+Motor4.run(BACKWARD);
+Motor2.run(FORWARD);
+Motor1.run(BACKWARD);
+}
+Void left()
+{
+
+Motor3.run(BACKWARD);
+Motor4.run(FORWARD);
+Motor2.run(BACKWARD);
+Motor1.run(FORWARD);
+}
+Void rotate()
+{
+Motor3.run(BACKWARD);
+Motor4.run(FORWARD);
+Motor2.run(BACKWARD);
+Motor1.run(FORWARD);
+
+Delay(1000);
+}
+Void stop()
+{
+Motor3.run(RELEASE);
+Motor4.run(RELEASE);
+Motor2.run(RELEASE);
+Motor1.run(RELEASE);
+}
+Void reverse(){
+Motor3.run(BACKWARD);
+Motor4.run(BACKWARD);
+Motor2.run(BACKWARD);
+Motor1.run(BACKWARD);
+//delay(3000);
+}
+Void forward()
+
+{
+Motor3.run(FORWARD);
+Motor4.run(FORWARD);
+Motor2.run(FORWARD);
+Motor1.run(FORWARD);
+//delay(3000);
+
+}
