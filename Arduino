@@ -23,7 +23,7 @@ If(Serial.available())
 Serial.println(Serial.read());
 }
 
-If(Serial.read()==83)
+If(Serial.read()==83)  // values received from HC05 sensor 
 
 {
 Stop();
